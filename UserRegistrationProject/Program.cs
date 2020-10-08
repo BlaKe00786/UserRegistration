@@ -6,42 +6,35 @@ namespace UserRegistrationProject
     {
         static void Main(string[] args)
         {
-            string firstName,lastName,emailID;
+            string firstName,lastName,emailID,mobileNum;
             var regexName = @"^[A-Z][a-z]{2,18}$";
             var regexEmailID = @"^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9a-zA-Z]+.[a-zA-Z]{2,3}(.[a-zA-Z]{2})?$";
+            var regexMobile = @"[1-9]{1}[0-9]{1,2}[ ]{1}[6-9]{1}[0-9]{9}";
             Console.WriteLine("Enter First Name: ");
             firstName = Console.ReadLine();
+            checkIfValid(regexName,firstName);
             Console.WriteLine("Enter Last Name: ");
             lastName = Console.ReadLine();
+            checkIfValid(regexName, lastName);
             Console.WriteLine("Enter Email ID: ");
             emailID = Console.ReadLine();
-            var matchFirstName = Regex.Match(firstName, regexName);
-            var matchLastName = Regex.Match(lastName, regexName);
-            var matchEmailID = Regex.Match(emailID, regexEmailID);
-            if (matchFirstName.Success)
+            checkIfValid(regexEmailID, emailID);
+            Console.WriteLine("Enter Mobile Number: ");
+            mobileNum = Console.ReadLine();
+            checkIfValid(regexMobile, mobileNum);
+        }
+        public static void checkIfValid(string regex, string input)
+        {
+            var matchInput = Regex.Match(input, regex);
+            if (matchInput.Success)
             {
-                Console.WriteLine("Valid First Name");
+                Console.WriteLine("Valid");
             }
             else
             {
-                Console.WriteLine("Invalid First Name");
+                Console.WriteLine("Invalid");
             }
-            if (matchLastName.Success)
-            {
-                Console.WriteLine("Valid Last Name");
-            }
-            else
-            {
-                Console.WriteLine("Invalid Last Name");
-            }
-            if (matchEmailID.Success)
-            {
-                Console.WriteLine("Valid EMaill ID");
-            }
-            else
-            {
-                Console.WriteLine("Invalid EMaill ID");
-            }
+
         }
     }
 }
