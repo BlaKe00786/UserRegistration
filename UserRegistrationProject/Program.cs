@@ -6,13 +6,18 @@ namespace UserRegistrationProject
     {
         static void Main(string[] args)
         {
-            string firstName,lastName;
-            var regex = @"^[A-Z][a-z]{2,18}$";
+            string firstName,lastName,emailID;
+            var regexName = @"^[A-Z][a-z]{2,18}$";
+            var regexEmailID = @"^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9a-zA-Z]+.[a-zA-Z]{2,3}(.[a-zA-Z]{2})?$";
             Console.WriteLine("Enter First Name: ");
             firstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name: ");
             lastName = Console.ReadLine();
-            var matchFirstName = Regex.Match(firstName, regex);
+            Console.WriteLine("Enter Email ID: ");
+            emailID = Console.ReadLine();
+            var matchFirstName = Regex.Match(firstName, regexName);
+            var matchLastName = Regex.Match(lastName, regexName);
+            var matchEmailID = Regex.Match(emailID, regexEmailID);
             if (matchFirstName.Success)
             {
                 Console.WriteLine("Valid First Name");
@@ -21,7 +26,6 @@ namespace UserRegistrationProject
             {
                 Console.WriteLine("Invalid First Name");
             }
-            var matchLastName = Regex.Match(lastName, regex);
             if (matchLastName.Success)
             {
                 Console.WriteLine("Valid Last Name");
@@ -29,6 +33,14 @@ namespace UserRegistrationProject
             else
             {
                 Console.WriteLine("Invalid Last Name");
+            }
+            if (matchEmailID.Success)
+            {
+                Console.WriteLine("Valid EMaill ID");
+            }
+            else
+            {
+                Console.WriteLine("Invalid EMaill ID");
             }
         }
     }
