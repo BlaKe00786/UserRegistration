@@ -15,7 +15,7 @@ namespace UserRegistrationProject
             }
             else
             {
-                return false;
+                throw new ValidateCustomExceptions(ValidateCustomExceptions.ExceptionType.INVALID_ENTRY, "Invalid Input"); ;
             }
         }
     }
